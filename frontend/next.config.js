@@ -13,7 +13,7 @@ const nextConfig = {
     
     config.plugins.push(
       new webpack.IgnorePlugin({
-        resourceRegExp: /^(@react-native-async-storage\/async-storage|pino-pretty)$/,
+        resourceRegExp: /^(@react-native-async-storage\/async-storage|pino-pretty|@coinbase\/cdp-sdk|@base-org\/account)$/,
       })
     );
     
