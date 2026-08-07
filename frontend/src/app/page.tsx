@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useAccount, useConnect, useDisconnect, useBalance } from "wagmi";
-import { injected, metaMask, walletConnect } from "wagmi/connectors";
+import { useAccount, useConnect, useBalance } from "wagmi";
 import { parseEther, formatEther } from "viem";
 import { Wallet, Grid, Zap, Gem, Timer, Trophy, ExternalLink, Chrome, Smartphone, Crown, AlertCircle, CheckCircle, Users } from "lucide-react";
 import { MiningGrid } from "@/components/MiningGrid";
@@ -16,8 +15,6 @@ const ROUND_DURATION = 45;
 
 export default function Home() {
   const { address, isConnected } = useAccount();
-  const { connect, connectors } = useConnect();
-  const { disconnect } = useDisconnect();
   const { data: balance } = useBalance({ address });
   const [roundInfo, setRoundInfo] = useState({
     round: 1,
@@ -99,12 +96,6 @@ export default function Home() {
               {isConnected && address && (
                 <div className="hidden sm:flex items-center gap-2 text-sm">
                   <span className="text-dark-400">{formatEther(balance?.value || 0n)} ETH</span>
-                  <button
-                    onClick={() => disconnect()}
-                    className="text-dark-400 hover:text-white text-xs px-2 py-1 rounded"
-                  >
-                    Disconnect
-                  </button>
                 </div>
               )}
             </div>
